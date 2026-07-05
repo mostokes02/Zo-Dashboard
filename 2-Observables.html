@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+<head>
+    <title>Setup Example</title>
+    <script src="C:\AAA_Personal\mo\career\_training\_knockoutJS\knockout-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            var myViewModel = function(myCourse, myRating) {
+                this.course = ko.observable(myCourse);
+                this.rating = ko.observable(myRating);
+                //computed observable is made up of other observables
+                this.courseResult = ko.computed(function(){
+                    return "The course " + this.course() + " got a rating of " + this.rating();
+
+                }, this);
+            };
+            ko.applyBindings(myViewModel("Knockout JS", 9));
+        });
+    </script>
+
+</head>
+<body>
+    <p>Course: <input data-bind="value: course" /></p>
+    <p>Rating: <input data-bind="value: rating" /></p>
+    <h3><span data-bind="text: courseResult"></span></h3>
+</body>
+</html>

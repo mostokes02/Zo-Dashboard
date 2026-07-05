@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+<head>
+    <title>Setup Example</title>
+    <script src="C:\AAA_Personal\mo\career\_training\_knockoutJS\knockout-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            var listModel = function(courses) {
+                var self = this;
+                self.courses = ko.observableArray(courses);
+                this.newCourse = ko.observable("");
+                this.addCourse = function(){
+                    if (self.newCourse() != "") {
+                        self.courses.push(self.newCourse());
+                        self.courses.sort();
+                        self.newCourse("");
+                    }
+                }
+            };
+            ko.applyBindings(new listModel(["C#","Knockout JS","JavaScript"]));
+        });
+    </script>
+
+</head>
+<body>
+    <form data-bind="submit: addCourse">
+        <input data-bind='value: newCourse, valueUpdate: "afterkeydown"'/>
+        <button type="submit" data-bind="enable: newCourse().length >0">Add</button>
+        <p>Courses List:</p>
+        <select multiple="multiple" width="50" data-bind="options: courses"></select>
+    </form>
+    <h3>There are <span data-bind="text: courses().length"></span> courses in the list.</h3>
+</body>
+</html>

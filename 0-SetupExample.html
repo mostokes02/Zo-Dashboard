@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+<head>
+    <title>Setup Example</title>
+    <script src="C:\AAA_Personal\mo\career\_training\_knockoutJS\knockout-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            var myViewModel = {
+                course: "Knockout",
+                author: "Stokes"
+            };
+            ko.applyBindings(myViewModel);
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        The course <u><span data-bind="text: course"></span></u> will be taught by
+        <b><span data-bind="text: author"></span></b>
+    </div>
+
+
+</body>
+</html>
